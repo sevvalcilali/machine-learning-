@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+.DS_Store
+.venv/
+data/
+raw/
+mlruns/
+models/
+metrics/
+mlflow_ui.log
+mlflow_server.log

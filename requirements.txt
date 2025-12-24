@@ -1,0 +1,6 @@
+pandas
+scikit-learn
+pyarrow
+mlflow
+prefect
+urllib3<2
