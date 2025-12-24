@@ -138,6 +138,7 @@ def main():
     if mlflow is not None:
         mlflow.set_experiment("avazu_ctr_baseline")
         with mlflow.start_run(run_name="ctr_baseline") as run:
+            mlflow.set_tag("mlflow.source.name", "https://github.com/sevvalcilali/machine-learning-")
             mlflow.log_params(
                 {
                     "hash_n_features": args.hash_n_features,

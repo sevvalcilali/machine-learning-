@@ -148,6 +148,7 @@ def _setup_mlflow(cfg: Config):
         return None
     mlflow.set_experiment("avazu_ctr_streaming")
     run = mlflow.start_run(run_name="ctr_streaming_training")
+    mlflow.set_tag("mlflow.source.name", "https://github.com/sevvalcilali/machine-learning-")
     mlflow.log_params(
         {
             "hash_n_features": cfg.hash_n_features,
