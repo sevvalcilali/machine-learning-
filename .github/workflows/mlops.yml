@@ -1,4 +1,4 @@
-name: MLOps Pipeline CI
+nname: MLOps Pipeline CI
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: ["main"]
   workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"   # daily scheduled run (event-based + cron)
 
 jobs:
   pipeline:
@@ -34,16 +36,17 @@ jobs:
 
       - name: Run Prefect training pipeline (CI small mode)
         env:
-          PREFECT_API_URL: ""
-
+          # --- CI small mode (fast) ---
           CHUNK_SIZE: "50000"
           MAX_TRAIN_CHUNKS: "1"
           VAL_ROWS: "10000"
           VAL_CHUNKS: "1"
 
+          # Keep model tiny for CI
           N_ESTIMATORS: "1"
           HASH_N_FEATURES: "262144"
 
+          # Local MLflow tracking
           MLFLOW_TRACKING_URI: "sqlite:///mlflow.db"
         run: |
           python -u src/prefect_flow.py
