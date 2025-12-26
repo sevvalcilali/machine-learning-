@@ -1,10 +1,10 @@
+import os
 import subprocess
 from pathlib import Path
 
 from prefect import flow, task
 
 
-# ✅ Failure handling (retry) EKLENDİ
 @task(retries=2, retry_delay_seconds=60)
 def run_training():
     subprocess.check_call(["python", "src/train_streaming.py"])
@@ -34,14 +34,20 @@ def validate_and_register(run_id: str, min_pr_auc: float = 0.12, run_dir: str = 
     )
 
 
-# UI'da flow adı bu görünsün diye name verdik
+
 @flow(name="avazu_ctr_training_pipeline")
 def training_pipeline(min_pr_auc: float = 0.12, run_dir: str = "."):
     run_training()
+
+
+    if os.environ.get("CI") == "true":
+        print("CI mode: skipping load_run_id and validate/register steps.")
+        return
+
     run_id = load_run_id()
     validate_and_register(run_id, min_pr_auc=min_pr_auc, run_dir=run_dir)
 
 
-# Lokal tek seferlik çalıştırmak istersen:
 if __name__ == "__main__":
     training_pipeline()
+
