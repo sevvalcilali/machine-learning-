@@ -1,3 +1,22 @@
+# IDE
+.idea/
+
+# Virtual env
+.venv/
+
+# Data & models
+data/
+models/
+metrics/
+mlruns/
+*.joblib
+*.csv
+*.gz
+
+# MLflow local db
+mlflow.db
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

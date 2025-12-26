@@ -4,3 +4,6 @@ pyarrow
 mlflow
 prefect
 urllib3<2
+fastapi
+uvicorn[standard]
+joblib
