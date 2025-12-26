@@ -7,3 +7,4 @@ urllib3<2
 fastapi
 uvicorn[standard]
 joblib
+python-dotenv

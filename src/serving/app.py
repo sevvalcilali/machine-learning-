@@ -3,6 +3,9 @@ from .schemas import PredictRequest, PredictResponse
 from .model_loader import load_artifact
 from .predictor import build_predictor
 
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = FastAPI(title="Avazu CTR Serving API")
 
