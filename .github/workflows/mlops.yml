@@ -7,7 +7,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "0 3 * * *"   # daily scheduled run (event-based + cron)
 
 jobs:
   pipeline:
@@ -53,3 +53,15 @@ jobs:
           MLFLOW_TRACKING_URI: "sqlite:///mlflow.db"
         run: |
           python -u src/prefect_flow.py
+
+      - name: Upload model artifact (.joblib)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ctr-model-joblib
+          path: models/*.joblib
+
+      - name: Upload metrics artifact (optional)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ctr-metrics
+          path: metrics/*.json
