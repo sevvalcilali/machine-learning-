@@ -1,0 +1,9 @@
+{
+  "psi": 2.8889453565914742,
+  "alerts": [
+    "Prediction drift (PSI) high: 2.889 > 0.2"
+  ],
+  "operating_threshold": 0.5,
+  "min_precision": 0.2,
+  "max_psi": 0.2
+}
