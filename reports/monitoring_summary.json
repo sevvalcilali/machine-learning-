@@ -1,0 +1,11 @@
+{
+  "psi": 9.533616248823897e-05,
+  "alerts": [],
+  "operating_threshold": 0.01,
+  "min_precision": 0.2,
+  "max_psi": 0.2,
+  "recommended_threshold": 0.01,
+  "recommended_precision": 0.42242703533026116,
+  "recommended_recall": 0.24997159413702988,
+  "recommended_f1": 0.3140838032693269
+}
